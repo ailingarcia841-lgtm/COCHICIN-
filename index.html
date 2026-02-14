@@ -1,28 +1,321 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Romantic Love Letter</title>
-    <style>
-        body { font-family: Arial, sans-serif; background-color: #f9f9f9; color: #333; }
-        .container { max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px; background: white; }
-        h1 { color: #e63946; text-align: center; }
-        p { line-height: 1.5; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Isaac 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --rosa:#f6c1cc;
+  --crema:#fff8f3;
+  --oro:#d4af37;
+  --glass:rgba(255,255,255,.35);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(180deg,var(--crema),#fdeef1);
+  color:#444;
+  overflow-x:hidden;
+}
+
+/* LOADER */
+#loader{
+  position:fixed;
+  inset:0;
+  background:var(--crema);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+}
+
+.heart{
+  width:60px;height:60px;
+  background:var(--rosa);
+  transform:rotate(45deg);
+  animation:beat 1s infinite;
+  position:relative;
+}
+
+.heart::before,.heart::after{
+  content:'';
+  width:60px;height:60px;
+  background:var(--rosa);
+  border-radius:50%;
+  position:absolute;
+}
+
+.heart::before{top:-30px;}
+.heart::after{left:-30px;}
+
+@keyframes beat{
+  0%,100%{transform:rotate(45deg) scale(1);}
+  50%{transform:rotate(45deg) scale(1.2);}
+}
+
+#loader p{margin-top:20px;}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:3rem;
+  color:#b76e79;
+  animation:glow 3s infinite;
+}
+
+@keyframes glow{
+  0%,100%{text-shadow:0 0 10px #f6c1cc;}
+  50%{text-shadow:0 0 25px #d4af37;}
+}
+
+/* PETALOS */
+.petal{
+  position:absolute;
+  top:-10%;
+  font-size:18px;
+  animation:fall linear infinite;
+  opacity:.6;
+}
+
+@keyframes fall{
+  to{transform:translateY(110vh) rotate(360deg);}
+}
+
+/* SECTIONS */
+section{
+  padding:80px 20px;
+  text-align:center;
+}
+
+/* MUSIC */
+#music-btn{
+  position:fixed;
+  bottom:20px;right:20px;
+  width:55px;height:55px;
+  border-radius:50%;
+  border:none;
+  background:var(--oro);
+  color:white;
+  font-size:20px;
+  cursor:pointer;
+  box-shadow:0 10px 20px rgba(0,0,0,.2);
+  z-index:100;
+}
+
+/* GALERIA */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:20px;
+}
+
+.polaroid{
+  background:white;
+  padding:10px;
+  box-shadow:0 10px 20px rgba(0,0,0,.15);
+  transform:rotate(-2deg);
+  transition:.4s;
+}
+
+.polaroid:nth-child(even){transform:rotate(2deg);}
+.polaroid img{width:100%;border-radius:5px;}
+.polaroid:hover{transform:scale(1.1) rotate(0);}
+
+/* TIMELINE */
+.timeline{
+  max-width:600px;
+  margin:auto;
+  position:relative;
+}
+
+.timeline::before{
+  content:'';
+  position:absolute;
+  left:50%;
+  width:3px;
+  height:100%;
+  background:var(--oro);
+}
+
+.event{
+  width:50%;
+  padding:20px;
+  opacity:0;
+  transform:translateY(30px);
+  transition:1s;
+}
+
+.event.show{opacity:1;transform:translateY(0);}
+.event.left{text-align:right;}
+.event.right{margin-left:50%;}
+
+/* CARTA */
+.letter{
+  max-width:850px;
+  margin:auto;
+  padding:40px;
+  background:var(--glass);
+  backdrop-filter:blur(12px);
+  border-radius:25px;
+  box-shadow:0 20px 40px rgba(0,0,0,.15);
+}
+
+.letter p{
+  font-family:'Dancing Script',cursive;
+  font-size:1.4rem;
+  white-space:pre-line;
+}
+
+/* CONTADOR */
+.counter{
+  font-size:1.6rem;
+  color:#b76e79;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .hero h1{font-size:2.2rem;}
+  .timeline::before{left:10px;}
+  .event{width:100%;margin-left:20px;text-align:left;}
+}
+</style>
 </head>
+
 <body>
-    <div class="container">
-        <h1>A Letter to My Beloved Isaac</h1>
-        <p>My Dearest Isaac,</p>
-        <p>As I sit down to write this letter, my heart swells with emotions that I can hardly contain. You are the light in my life, and every moment spent with you is a treasure that I hold dear.</p>
-        <p>From the very first time our eyes met, I knew there was something special between us. Your smile ignited a spark in my heart that has only grown brighter with each passing day.</p>
-        <p>Every laugh, every shared secret, and every quiet moment together weaves the fabric of our love story, and I cherish it all deeply.</p>
-        <p>You inspire me to be the best version of myself, and I am eternally grateful for your kindness, patience, and unwavering support. In a world that can often feel chaotic, you are my sanctuary.</p>
-        <p>As we navigate through life together, I promise to stand by your side through every challenge and celebration. I am excited about our future and the beautiful memories we have yet to create.</p>
-        <p>Thank you for being the incredible person that you are. I love you beyond words.</p>
-        <p>Yours forever,</p>
-        <p>[Your Name]</p>
-    </div>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="heart"></div>
+  <p>Preparando algo especial para <strong>Isaac 💖</strong></p>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Nuestra Historia de Amor</h1>
+</section>
+
+<!-- MUSICA -->
+<button id="music-btn">▶</button>
+
+<!-- Spotify embed -->
+<section>
+  <h2>Nuestra canción 🎵</h2><br>
+  <iframe style="border-radius:12px"
+    src="https://open.spotify.com/embed/track/4atMrAadB7pF6sN6b1pG0b"
+    width="100%" height="152" frameborder="0"
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+  </iframe>
+</section>
+
+<!-- GALERIA -->
+<section>
+  <h2>Momentos Inolvidables</h2><br>
+  <div class="gallery">
+    <!-- CAMBIA ESTAS FOTOS -->
+    <div class="polaroid"><img src="foto1.jpg" alt="foto 1"></div>
+    <div class="polaroid"><img src="foto2.jpg" alt="foto 2"></div>
+    <div class="polaroid"><img src="foto3.jpg" alt="foto 3"></div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section>
+  <h2>Nuestro Camino</h2><br>
+  <div class="timeline">
+    <div class="event left">✨ 14 de diciembre de 2022 — Donde todo comenzó</div>
+    <div class="event right">💑 Nuestro primer sí</div>
+    <div class="event left">❤️ Cada día eligiéndonos</div>
+  </div>
+</section>
+
+<!-- CARTA -->
+<section>
+  <div class="letter">
+    <p id="typewriter"></p>
+  </div>
+</section>
+
+<!-- CONTADOR -->
+<section>
+  <h2>Tiempo juntos</h2><br>
+  <div class="counter" id="counter"></div>
+</section>
+
+<script>
+/* LOADER */
+window.onload=()=>document.getElementById('loader').style.display='none';
+
+/* PETALOS */
+for(let i=0;i<30;i++){
+  const p=document.createElement('div');
+  p.className='petal';
+  p.textContent='🌸';
+  p.style.left=Math.random()*100+'%';
+  p.style.animationDuration=5+Math.random()*5+'s';
+  document.body.appendChild(p);
+}
+
+/* CARTA TYPEWRITER */
+const text=`Isaac, mi vida, mi todo,
+
+Hoy es 14 de febrero... nuestro mes otra vez. ¿Puedes creer que empezó todo un 14 de diciembre de 2022? Te vi y pum, algo dentro de mí se movió. No sé, eras tú, con esa forma tuya de ser que me atrapó desde el principio. Luego, hablando, conociéndote más, me gustaste tanto que no podía parar de pensar en ti. Me robabas sonrisas sin darte cuenta.
+
+Cuando me pediste ser tu novia, mi corazón latía como loco. Tenía un miedo que me comía viva, ¿y si te decía sí y todo se arruinaba? Pero el miedo mayor era perderte, así que lo dejé ir y te dije que sí. Dios, qué alivio, qué felicidad. Al inicio te hice sufrir, te trataba mal sin razón, y tú ahí, siempre, con los brazos abiertos, tan paciente, tan mío. Eres tan sentimental, mi amor, me dices cosas que me llegan al alma, y por eso te quiero tanto, tanto. Somos como dos locos enamorados, ¿verdad? Riéndonos de nada, haciendo locuras juntos.
+
+Isaac, te amo de una forma que duele en el pecho. Me encanta abrazarte y no soltarte nunca, sentirte mío, darte besitos suaves en la frente, en los labios, everywhere. Tomarnos de la mano caminando, perderme en cómo me miras, como si yo fuera lo único en el mundo. Esos momentos me hacen tan feliz... Aunque ahora estemos lejos y cada día sin ti sea eterno (solo un mes más, porfa), recuerdo lo nuestro y se me escapa una lágrima de lo bonito. Ir al cine riéndonos bajito, comer esos tacos que nos encantan de la taquería del puente, vernos en la escuela con esa complicidad, caminar en el parque como tontos felices.
+
+Eres mi primer amor de verdad, y no quiero que termine nunca. Tú me haces sentir viva, completa. Gracias por quedarte, por quererme así de fuerte. Hoy lloro de felicidad por nuestro mes, mi corazón late por ti. No veo la hora de verte y abrazarte hasta que duela.
+
+Te amo con todo lo que soy, para siempre.
+Ailin`;
+
+let i=0;
+function type(){
+  if(i<text.length){
+    document.getElementById('typewriter').innerHTML+=text.charAt(i);
+    i++;
+    setTimeout(type,35);
+  }
+}
+type();
+
+/* CONTADOR */
+const start=new Date("2022-12-14T00:00:00");
+setInterval(()=>{
+  const now=new Date();
+  const diff=now-start;
+  document.getElementById('counter').innerHTML=
+    `${Math.floor(diff/86400000)} días 
+     ${Math.floor(diff/3600000)%24} horas 
+     ${Math.floor(diff/60000)%60} minutos`;
+},1000);
+
+/* SCROLL */
+document.querySelectorAll('.event').forEach(e=>{
+  window.addEventListener('scroll',()=>{
+    if(e.getBoundingClientRect().top<window.innerHeight-50){
+      e.classList.add('show');
+    }
+  });
+});
+</script>
+
 </body>
 </html>
